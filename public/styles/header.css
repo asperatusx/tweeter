@@ -1,7 +1,6 @@
 header {
   width: 100%;
   height: 400px;
-  padding-top: 120px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,12 +10,12 @@ header {
   background-image: url("https://www.transparenttextures.com/patterns/white-brick-wall.png");
 }
 
-.header-img img{
+/* .header-img img{
   width: 100%;
   height: 200px;
   background-size: contain;
-}
-
+} */
+/* 
 .header-name h2{
   margin: 0 0 15px;
-}
+} */
