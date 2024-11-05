@@ -9,20 +9,19 @@ nav {
   padding: 0 1.5em;
 }
 
-nav span{
+.nav-title {
   font-family: "Bungee", sans-serif;
   font-size: 2em;
-  padding-top: 0.5em;
-}
-
-nav p {
-  margin-bottom: 2px;
 }
 
 .right-header {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.right-header-word {
+  font-weight: bold;
 }
 
 .fa-angles-down {
