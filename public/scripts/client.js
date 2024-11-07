@@ -15,6 +15,7 @@ $(document).ready(function () {
       return alert('Character limit exceeded 140 characters!')
     }
     const serialData = $(this).serialize();
+    console.log(serialData)
     $.ajax('/tweets', { method: 'POST', data: serialData })
       .then(function (res) {
         loadTweets();
@@ -33,15 +34,18 @@ $(document).ready(function () {
   
   const createTweetElement = function ({ user, content, created_at }) {
     const convertedDate = timeago.format(new Date(created_at)) ;
+    const userName = $('<div>').text(user.name).html();
+    const userHandle = $('<div>').text(user.handle).html();
+    const contentText = $('<div>').text(content.text).html();
     return $(`<article>
           <header class="article-header">
             <div class="header-icon-container">
               <img class="article-header-img" src=${user.avatars} alt="Face icons created by Freepik - Flaticon">
-              <p class="article-header-name">${user.name}</p>
+              <p class="article-header-name">${userName}</p>
             </div>
-            <p class="article-header-at">${user.handle}</p>
+            <p class="article-header-at">${userHandle}</p>
           </header>
-          <p class="article-content">${content.text}</p>
+          <p class="article-content">${contentText}</p>
           <footer class="article-footer">
             <p class="article-footer-day">${convertedDate}</p>
             <div class="article-footer-icons">
