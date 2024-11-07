@@ -7,7 +7,7 @@
 $(document).ready(function () {
   $('.form-container').on('submit', function (e) {
     e.preventDefault();
-    const textArea = $(this).closest(this).find('#tweet-text').val();
+    const textArea = $(this).closest(this).find('#tweet-text').val().trim();
     if (textArea === '' || textArea === null) {
       return alert('The text area is empty! Please write something.')
     }
@@ -17,7 +17,10 @@ $(document).ready(function () {
     const serialData = $(this).serialize();
     $.ajax('/tweets', { method: 'POST', data: serialData })
       .then(function (res) {
-        console.log('Its a sucess!');
+        console.log(res);
+      })
+      .catch(function(err) {
+        console.log(err)
       })
   })
 
