@@ -17,7 +17,7 @@ $(document).ready(function () {
     const serialData = $(this).serialize();
     $.ajax('/tweets', { method: 'POST', data: serialData })
       .then(function (res) {
-        console.log(res);
+        loadTweets();
       })
       .catch(function(err) {
         console.log(err)
