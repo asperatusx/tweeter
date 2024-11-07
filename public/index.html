@@ -51,6 +51,9 @@
     <main class="container">
       <section class="new-tweet">
         <h2>Compose Tweet</h2>
+        <div class="form-error-container">
+          <p class="form-error-msg"></p>
+        </div>
         <form class="form-container" method="POST" action="/tweets">
           <label class="form-container-label" for="tweet-text">What are you humming about?</label>
           <textarea name="text" id="tweet-text"></textarea>

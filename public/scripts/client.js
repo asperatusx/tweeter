@@ -5,19 +5,26 @@
  */
 
 $(document).ready(function () {
+
+
+  $('.form-error-container').hide();
   $('.form-container').on('submit', function (e) {
     e.preventDefault();
     const textArea = $(this).closest(this).find('#tweet-text').val().trim();
     if (textArea === '' || textArea === null) {
-      return alert('The text area is empty! Please write something.')
+      $('.form-error-msg').text('ERROR: You have not written anything to tweet yet!')
+      $('.form-error-container').slideDown();
+      return
     }
     if (textArea.length > 140) {
-      return alert('Character limit exceeded 140 characters!')
+      $('.form-error-msg').text('ERROR: You have passed your character limit of 140 characters!')
+      $('.form-error-container').slideDown();
+      return
     }
     const serialData = $(this).serialize();
-    console.log(serialData)
     $.ajax('/tweets', { method: 'POST', data: serialData })
       .then(function (res) {
+        $('.form-error-container').slideUp();
         loadTweets();
       })
       .catch(function(err) {
