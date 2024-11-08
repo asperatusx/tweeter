@@ -1,14 +1,16 @@
 /* Tweets Section */
 .main-tweets {
   margin-bottom: 5em;
-}
-.main-tweets article {
-  border: 5px solid #545149;
-  padding: 15px;
-  margin-bottom: 3em;
-}
-.main-tweets article:hover {
-  box-shadow: 5px 10px #9eb5f5;
+
+  article {
+    border: 5px solid #545149;
+    padding: 15px;
+    margin-bottom: 3em;
+
+    &:hover {
+      box-shadow: 5px 10px #9eb5f5;
+    }
+  }
 }
 
 /* Header */
@@ -47,15 +49,18 @@
   align-items: center;
   border-top: 5px solid #545149;
   padding: 10px 20px;
-}
-.article-footer-day {
-  font-size: 0.8em;
-  margin: 0;
-}
-.article-footer-icons i {
-  color: #4056A1;
-  padding: 0 5px;
-}
-.article-footer-icons i:hover {
-  color: #ccae2a;
+
+    &-day {
+      font-size: 0.8em;
+      margin: 0;  
+    }
+
+    &-icons i{
+      color:  #4056A1;
+      padding: 0 5px;
+
+      &:hover {
+        color: #ccae2a;
+      }
+    }
 }

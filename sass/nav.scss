@@ -1,0 +1,49 @@
+$background-color: #4056A1;
+$bungee-font: "Bungee", sans-serif;
+$font-color: #FFFFFF;
+
+nav {
+  position: fixed;
+  top: 0;
+  background-color: $background-color;
+  color: $font-color;
+  height: 120px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1.5em;
+
+  .nav-title {
+    font-family: $bungee-font;
+    font-size: 2.5rem;
+  }
+}
+
+.right-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+
+  &:hover > .fa-angles-down {
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-name: bounce;
+    animation-timing-function: ease;
+  }
+
+  &-word {
+    font-weight: bold;
+  }
+}
+
+.fa-angles-down {
+  color: red;
+}
+
+@keyframes bounce {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(15px); }
+  100% { transform: translateY(0); }
+}
