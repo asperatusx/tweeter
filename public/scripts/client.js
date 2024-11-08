@@ -5,7 +5,13 @@
  */
 
 $(document).ready(function() {
+  
+  $('.right-header').on('click', function() {
+    $('.form-container').slideToggle();
+  })
+  
   $('.form-error-container').hide();
+
   $('.form-container').on('submit', function(e) {
     e.preventDefault();
     const textArea = $(this).closest(this).find('#tweet-text').val().trim();
@@ -71,4 +77,5 @@ $(document).ready(function() {
   };
 
   loadTweets();
+
 });
