@@ -39,14 +39,15 @@ body {
   }
 
   .main-header {
-    margin: 4rem;
+    margin: 4rem 4rem 4rem auto;
     max-width: 600px;
+    border-left: 4rem solid #f4f1ec;
   }
 
   main {
     width: 100%;
     margin: 0 auto 0 4rem;
     max-width: 750px;
-    padding-right: 2rem;
+    padding-right: 4rem;
   }
 }

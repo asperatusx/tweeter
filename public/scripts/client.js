@@ -4,41 +4,41 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-$(document).ready(function () {
+$(document).ready(function() {
   $('.form-error-container').hide();
-  $('.form-container').on('submit', function (e) {
+  $('.form-container').on('submit', function(e) {
     e.preventDefault();
     const textArea = $(this).closest(this).find('#tweet-text').val().trim();
     if (textArea === '' || textArea === null) {
-      $('.form-error-msg').text('ERROR: You have not written anything to tweet yet!')
+      $('.form-error-msg').text('ERROR: You have not written anything to tweet yet!');
       $('.form-error-container').slideDown();
-      return
+      return;
     }
     if (textArea.length > 140) {
-      $('.form-error-msg').text('ERROR: You have passed your character limit of 140 characters!')
+      $('.form-error-msg').text('ERROR: You have passed your character limit of 140 characters!');
       $('.form-error-container').slideDown();
-      return
+      return;
     }
     const serialData = $(this).serialize();
     $.ajax('/tweets', { method: 'POST', data: serialData })
-      .then(function (res) {
+      .then(function() {
         $('.form-error-container').slideUp();
         loadTweets();
       })
       .catch(function(err) {
-        console.log(err)
-      })
-  })
+        console.log(err);
+      });
+  });
 
   const loadTweets = function() {
     $.ajax('/tweets', { method: 'GET' })
       .then(function(res) {
-        renderTweets(res)
-      })
-  }
+        renderTweets(res);
+      });
+  };
   
-  const createTweetElement = function ({ user, content, created_at }) {
-    const convertedDate = timeago.format(new Date(created_at)) ;
+  const createTweetElement = function({ user, content, created_at }) {
+    const convertedDate = timeago.format(new Date(created_at));
     const userName = $('<div>').text(user.name).html();
     const userHandle = $('<div>').text(user.handle).html();
     const contentText = $('<div>').text(content.text).html();
@@ -59,8 +59,8 @@ $(document).ready(function () {
               <i class="fa-solid fa-heart"></i>
             </div>
           </footer>
-        </article>`)
-  }
+        </article>`);
+  };
 
   const renderTweets = function(tweets) {
     $('.main-tweets').empty();
@@ -68,7 +68,7 @@ $(document).ready(function () {
       const $tweet = createTweetElement(tweet);
       $('.main-tweets').prepend($tweet);
     }
-  }
+  };
 
   loadTweets();
-})
+});
