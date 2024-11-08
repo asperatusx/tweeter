@@ -8,6 +8,7 @@ $(document).ready(function() {
   
   $('.right-header').on('click', function() {
     $('.form-container').slideToggle();
+    $('#tweet-text').focus();
   })
   
   $('.form-error-container').hide();
