@@ -5,8 +5,6 @@
  */
 
 $(document).ready(function () {
-
-
   $('.form-error-container').hide();
   $('.form-container').on('submit', function (e) {
     e.preventDefault();
