@@ -6,6 +6,11 @@ A simple single-page AJAX-based Twitter clone that uses jQuery, HTML5 and plain 
 
 ## Final Product
 
+!['Screenshot of mobile layout'](https://github.com/asperatusx/tweeter/blob/master/docs/tweeter-mobile.PNG?raw=true)
+
+!['Screenshot of desktop layout'](https://github.com/asperatusx/tweeter/blob/master/docs/tweeter-desktop.PNG?raw=true)
+
+!['Screenshot of posting new tweet'](https://github.com/asperatusx/tweeter/blob/master/docs/tweeter-quote.PNG?raw=true)
 
 ## Getting Started
 
