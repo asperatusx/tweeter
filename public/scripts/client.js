@@ -5,44 +5,51 @@
  */
 
 $(document).ready(function() {
-  
+  $('.form-error-container').hide();
+
+  //create write a tweet click event
   $('.right-header').on('click', function() {
     $('.form-container').slideToggle();
     $('#tweet-text').focus();
   })
-  
-  $('.form-error-container').hide();
 
+  //POST tweet to server and display error messages
   $('.form-container').on('submit', function(e) {
     e.preventDefault();
     const textArea = $(this).closest(this).find('#tweet-text').val().trim();
-    if (textArea === '' || textArea === null) {
-      $('.form-error-msg').text('ERROR: You have not written anything to tweet yet!');
-      $('.form-error-container').slideDown();
-      return;
+    const errorIsTrue = displayError(textArea);
+    if (errorIsTrue) {
+      return
     }
-    if (textArea.length > 140) {
-      $('.form-error-msg').text('ERROR: You have passed your character limit of 140 characters!');
-      $('.form-error-container').slideDown();
-      return;
-    }
+
+    //If there are no errors POST tweet and clear textarea
     const serialData = $(this).serialize();
     $.ajax('/tweets', { method: 'POST', data: serialData })
       .then(function() {
+        const counter = $('#tweet-text').closest('.form-container').find('.counter');
         $('.form-error-container').slideUp();
         loadTweets();
+        $('#tweet-text').val('');
+        $(counter).val(140);
       })
       .catch(function(err) {
         console.log(err);
       });
   });
 
-  const loadTweets = function() {
-    $.ajax('/tweets', { method: 'GET' })
-      .then(function(res) {
-        renderTweets(res);
-      });
-  };
+  //function will return true if any tweet limit is met
+  const displayError = function(textArea) {
+    if (!textArea) {
+      $('.form-error-msg').text('ERROR: You have not written anything to tweet yet!');
+      $('.form-error-container').slideDown();
+      return true
+    }
+    if (textArea.length > 140) {
+      $('.form-error-msg').text('ERROR: You have passed your character limit of 140 characters!');
+      $('.form-error-container').slideDown();
+      return true
+    }
+  }
   
   const createTweetElement = function({ user, content, created_at }) {
     const convertedDate = timeago.format(new Date(created_at));
@@ -77,6 +84,14 @@ $(document).ready(function() {
     }
   };
 
+  const loadTweets = function() {
+    $.ajax('/tweets', { method: 'GET' })
+      .then(function(res) {
+        renderTweets(res);
+      });
+  };
+
+  
   loadTweets();
 
 });
