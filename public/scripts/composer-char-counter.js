@@ -1,3 +1,4 @@
+// takes output counter and change color and value based on text input
 $(document).ready(function() {
   $("#tweet-text").on('input', function() {
     const counter = $(this).closest('.form-container').find('.counter');
